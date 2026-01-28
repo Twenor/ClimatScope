@@ -15,16 +15,26 @@
             --bg: #f3f4f6;
             --card: #ffffff;
         }
+        /* Mode sombre natif */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text: #f9fafb;
+                --text-light: #d1d5db;
+                --bg: #111827;
+                --card: #1f2937;
+            }
+        }
         body {
             font-family: 'Inter', system-ui, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .chart-container {
             position: relative;
             width: 100%;
-            height: clamp(280px, 55vh, 380px);
+            height: clamp(250px, 50vh, 380px);
             max-width: 620px;
             margin: 0 auto;
         }
@@ -43,77 +53,73 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased">
+<body class="min-h-screen flex flex-col antialiased dark:bg-gray-900 dark:text-gray-100">
 
-    <!-- Skip link -->
-    <a href="#main" class="sr-only focus:not-sr-only fixed top-4 left-4 bg-white px-4 py-2 rounded shadow z-50 focus:ring-2 focus:ring-blue-500">Aller au contenu principal</a>
+    <a href="#main" class="sr-only focus:not-sr-only fixed top-4 left-4 bg-white dark:bg-gray-800 px-4 py-2 rounded shadow z-50 focus:ring-2 focus:ring-blue-500">Aller au contenu principal</a>
 
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50 border-b dark:border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-tight">
-                Climat<span class="text-blue-600">Scope</span>
+            <h1 class="text-xl sm:text-2xl font-bold tracking-tight">
+                Climat<span class="text-blue-600 dark:text-blue-400">Scope</span>
             </h1>
             <nav class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#definitions" class="hover:text-blue-600 transition">Météo vs Climat</a>
-                <a href="#forcage" class="hover:text-red-600 transition">Forçage radiatif</a>
-                <a href="#oceans" class="hover:text-blue-600 transition">Rôle des océans</a>
-                <a href="#retroactions" class="hover:text-green-600 transition">Rétroactions</a>
+                <a href="#definitions" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Météo vs Climat</a>
+                <a href="#forcage" class="hover:text-red-600 dark:hover:text-red-400 transition">Forçage radiatif</a>
+                <a href="#oceans" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Rôle des océans</a>
+                <a href="#retroactions" class="hover:text-green-600 dark:hover:text-green-400 transition">Rétroactions</a>
             </nav>
-            <button id="mobile-menu-btn" aria-label="Ouvrir le menu" class="md:hidden text-2xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded">
+            <button id="mobile-menu-btn" aria-label="Ouvrir le menu" class="md:hidden text-2xl text-gray-600 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded">
                 ☰
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-4 py-5 space-y-4">
-            <a href="#definitions" class="block text-gray-700 hover:text-blue-600">Météo vs Climat</a>
-            <a href="#forcage" class="block text-gray-700 hover:text-red-600">Forçage radiatif</a>
-            <a href="#oceans" class="block text-gray-700 hover:text-blue-600">Rôle des océans</a>
-            <a href="#retroactions" class="block text-gray-700 hover:text-green-600">Rétroactions</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700 px-4 py-5 space-y-4 shadow-lg">
+            <a href="#definitions" class="block text-gray-700 dark:text-gray-200 hover:text-blue-600">Météo vs Climat</a>
+            <a href="#forcage" class="block text-gray-700 dark:text-gray-200 hover:text-red-600">Forçage radiatif</a>
+            <a href="#oceans" class="block text-gray-700 dark:text-gray-200 hover:text-blue-600">Rôle des océans</a>
+            <a href="#retroactions" class="block text-gray-700 dark:text-gray-200 hover:text-green-600">Rétroactions</a>
         </div>
     </header>
 
     <main id="main" class="flex-grow">
 
-        <!-- Hero -->
-        <section class="bg-gradient-to-b from-white to-gray-50 pt-12 pb-16 border-b">
+        <section class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 pt-12 pb-16 border-b dark:border-gray-700">
             <div class="max-w-5xl mx-auto px-5 text-center">
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-5">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-5">
                     La Complexité du Système Climatique
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                     Comprendre comment l’atmosphère, les océans, les glaces et la biosphère interagissent pour expliquer le réchauffement actuel.
                 </p>
-                <div class="mt-8 flex flex-wrap justify-center gap-4">
-                    <span class="px-4 py-1.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800">Thème 1 – Chapitre 2</span>
-                    <span class="px-4 py-1.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">Enseignement Scientifique</span>
+                <div class="mt-8 flex flex-wrap justify-center gap-3">
+                    <span class="px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100">Thème 1 – Chapitre 2</span>
+                    <span class="px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">Enseignement Scientifique</span>
                 </div>
             </div>
         </section>
 
-        <!-- 1. Météo vs Climat -->
-        <section id="definitions" class="py-20 bg-gray-50">
+        <section id="definitions" class="py-12 sm:py-20 bg-gray-50 dark:bg-gray-950">
             <div class="max-w-5xl mx-auto px-5">
-                <div class="text-center mb-12">
-                    <h3 class="text-4xl font-bold text-gray-900 mb-4">1. Météorologie vs Climatologie</h3>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                <div class="text-center mb-10 sm:mb-12">
+                    <h3 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">1. Météorologie vs Climatologie</h3>
+                    <p class="text-md sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                         Deux sciences différentes par leurs échelles de temps et d’espace.
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
                     <button 
                         role="button" 
                         aria-expanded="false" 
                         aria-controls="meteo-details"
-                        class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all group text-left focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all group text-left focus:outline-none focus:ring-2 focus:ring-yellow-400"
                         onclick="toggleCard('meteo-details', this)">
-                        <div class="p-7 border-l-8 border-yellow-500">
+                        <div class="p-6 sm:p-7 border-l-8 border-yellow-500">
                             <div class="flex items-center justify-between mb-4">
-                                <h4 class="text-2xl font-bold text-gray-800">Météorologie</h4>
-                                <span class="text-4xl">☀️🌧️</span>
+                                <h4 class="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white">Météorologie</h4>
+                                <span class="text-3xl sm:text-4xl">☀️</span>
                             </div>
-                            <p class="text-gray-600 mb-3">L’étude du temps qu’il fait au jour le jour.</p>
-                            <div id="meteo-details" class="hidden space-y-3 text-sm text-gray-700">
+                            <p class="text-gray-600 dark:text-gray-300 mb-3">L’étude du temps qu’il fait au jour le jour.</p>
+                            <div id="meteo-details" class="hidden space-y-3 text-sm text-gray-700 dark:text-gray-400">
                                 <div class="flex items-start"><span class="mr-3 text-yellow-600 text-lg">⏱</span><span><strong>Court terme</strong> : heures, jours, semaines</span></div>
                                 <div class="flex items-start"><span class="mr-3 text-yellow-600 text-lg">📍</span><span>Échelle locale / régionale</span></div>
                                 <div class="flex items-start"><span class="mr-3 text-yellow-600 text-lg">🎯</span><span>Prévisions (pluie, vent, orages…)</span></div>
@@ -125,15 +131,15 @@
                         role="button" 
                         aria-expanded="false" 
                         aria-controls="climat-details"
-                        class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all group text-left focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all group text-left focus:outline-none focus:ring-2 focus:ring-blue-400"
                         onclick="toggleCard('climat-details', this)">
-                        <div class="p-7 border-l-8 border-blue-600">
+                        <div class="p-6 sm:p-7 border-l-8 border-blue-600">
                             <div class="flex items-center justify-between mb-4">
-                                <h4 class="text-2xl font-bold text-gray-800">Climatologie</h4>
-                                <span class="text-4xl">🌍📈</span>
+                                <h4 class="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white">Climatologie</h4>
+                                <span class="text-3xl sm:text-4xl">🌍</span>
                             </div>
-                            <p class="text-gray-600 mb-3">L’étude des moyennes et tendances sur des décennies.</p>
-                            <div id="climat-details" class="hidden space-y-3 text-sm text-gray-700">
+                            <p class="text-gray-600 dark:text-gray-300 mb-3">L’étude des moyennes et tendances sur des décennies.</p>
+                            <div id="climat-details" class="hidden space-y-3 text-sm text-gray-700 dark:text-gray-400">
                                 <div class="flex items-start"><span class="mr-3 text-blue-600 text-lg">⏳</span><span><strong>Long terme</strong> : 30 ans minimum, siècles</span></div>
                                 <div class="flex items-start"><span class="mr-3 text-blue-600 text-lg">🌐</span><span>Échelle globale ou continentale</span></div>
                                 <div class="flex items-start"><span class="mr-3 text-blue-600 text-lg">📊</span><span>Température moyenne, niveau des mers, banquise</span></div>
@@ -144,55 +150,53 @@
             </div>
         </section>
 
-        <!-- 2. Forçage radiatif -->
-        <section id="forcage" class="py-20 bg-white">
+        <section id="forcage" class="py-12 sm:py-20 bg-white dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-5">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
                     <div>
-                        <h3 class="text-4xl font-bold text-gray-900 mb-6">2. Le moteur du climat : le forçage radiatif</h3>
-                        <div class="prose prose-lg text-gray-700 max-w-none">
+                        <h3 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">2. Le moteur du climat</h3>
+                        <div class="prose prose-lg text-gray-700 dark:text-gray-300 max-w-none">
                             <p>Le climat dépend de l’équilibre entre :</p>
                             <ul class="list-disc pl-6 space-y-2 mt-4">
                                 <li>énergie reçue du Soleil (~342 W/m² en moyenne)</li>
                                 <li>énergie renvoyée vers l’espace (rayonnement infrarouge)</li>
                             </ul>
-                            <p class="font-semibold mt-6">Quand cet équilibre est rompu → forçage radiatif positif → réchauffement.</p>
+                            <p class="font-semibold mt-6 text-red-600 dark:text-red-400">Quand cet équilibre est rompu → forçage radiatif positif → réchauffement.</p>
                         </div>
 
-                        <div class="mt-10 bg-gray-50 p-6 rounded-xl border border-gray-200">
-                            <label for="ghg-slider" class="block text-sm font-medium text-gray-700 mb-3">
+                        <div class="mt-8 bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+                            <label for="ghg-slider" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 text-center sm:text-left">
                                 Augmentation des gaz à effet de serre
                             </label>
-                            <input type="range" id="ghg-slider" min="0" max="100" value="15" step="1" class="w-full h-2 bg-gray-200 rounded-lg cursor-pointer accent-red-500">
-                            <div class="flex justify-between text-xs text-gray-500 mt-2 px-1">
+                            <input type="range" id="ghg-slider" min="0" max="100" value="15" step="1" class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer accent-red-500">
+                            <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-2 px-1">
                                 <span>1750</span>
                                 <span>2025</span>
                                 <span>2100 ?</span>
                             </div>
                             <div class="mt-6 text-center">
-                                <p id="forcing-value" class="text-2xl font-bold text-gray-800">≈ +0.6 W/m²</p>
-                                <p id="forcing-status" class="text-lg font-medium text-green-600 mt-1">Équilibre ≈ stable</p>
+                                <p id="forcing-value" class="text-2xl font-bold text-gray-800 dark:text-white">≈ +0.6 W/m²</p>
+                                <p id="forcing-status" class="text-lg font-medium text-green-600 dark:text-green-400 mt-1">Équilibre ≈ stable</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Visualisation -->
-                    <div class="bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl p-8 shadow-2xl relative overflow-hidden aspect-[4/3] max-w-[580px] mx-auto">
+                    <div class="bg-gradient-to-b from-gray-900 to-black rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden aspect-[4/3] max-w-[580px] mx-auto w-full">
                         <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none"></div>
                         
-                        <div class="relative z-10 h-full flex flex-col justify-center items-center gap-10">
+                        <div class="relative z-10 h-full flex flex-col justify-center items-center gap-6 sm:gap-10">
                             <div class="text-center text-white">
-                                <div class="text-yellow-300 text-2xl font-bold mb-1">Énergie solaire reçue</div>
-                                <div class="text-5xl font-black text-yellow-400 drop-shadow-lg">342 W/m²</div>
+                                <div class="text-yellow-300 text-lg sm:text-2xl font-bold mb-1">Énergie solaire reçue</div>
+                                <div class="text-4xl sm:text-5xl font-black text-yellow-400 drop-shadow-lg">342 W/m²</div>
                             </div>
 
-                            <div class="w-24 h-64 bg-gradient-to-t from-red-700 via-red-500 to-red-300 rounded-t-2xl relative shadow-2xl transition-all duration-500" id="output-bar">
+                            <div class="w-16 sm:w-24 h-48 sm:h-64 bg-gradient-to-t from-red-700 via-red-500 to-red-300 rounded-t-2xl relative shadow-2xl transition-all duration-500" id="output-bar">
                                 <div id="trapped-heat" class="absolute bottom-0 left-0 w-full bg-red-900/60 transition-all duration-500 rounded-t-2xl" style="height: 8%"></div>
                             </div>
 
                             <div class="text-center text-white">
-                                <div class="text-red-300 text-xl font-bold mb-1">Infrarouge émis vers l’espace</div>
-                                <div id="output-value" class="text-4xl font-black">≈ 342 W/m²</div>
+                                <div class="text-red-300 text-lg sm:text-xl font-bold mb-1">Infrarouge émis</div>
+                                <div id="output-value" class="text-3xl sm:text-4xl font-black">≈ 342 W/m²</div>
                             </div>
                         </div>
                     </div>
@@ -200,40 +204,39 @@
             </div>
         </section>
 
-        <!-- 3. Océans -->
-        <section id="oceans" class="py-20 bg-blue-50/70">
+        <section id="oceans" class="py-12 sm:py-20 bg-blue-50/70 dark:bg-gray-950">
             <div class="max-w-5xl mx-auto px-5">
-                <div class="text-center mb-12">
-                    <h3 class="text-4xl font-bold text-gray-900 mb-4">3. Où va l’excès de chaleur ?</h3>
-                    <p class="text-lg text-gray-600">Plus de 90 % de l’énergie supplémentaire est absorbée par les océans.</p>
+                <div class="text-center mb-10 sm:mb-12">
+                    <h3 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">3. Où va l’excès de chaleur ?</h3>
+                    <p class="text-md sm:text-lg text-gray-600 dark:text-gray-400">Plus de 90 % de l’énergie supplémentaire est absorbée par les océans.</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-10 items-center">
-                    <div class="bg-white p-6 rounded-2xl shadow-xl">
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-10 items-center">
+                    <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-xl">
                         <div class="chart-container">
                             <canvas id="energyChart"></canvas>
                         </div>
-                        <p class="text-center text-sm text-gray-500 mt-4">Répartition du stockage de chaleur excédentaire (≈1971–2020)</p>
+                        <p class="text-center text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-4">Répartition du stockage de chaleur (1971–2020)</p>
                     </div>
 
-                    <div class="space-y-8">
-                        <div class="bg-white p-7 rounded-xl shadow-sm border-l-4 border-blue-600">
-                            <h4 class="text-2xl font-bold text-gray-800 mb-3">L’océan : le principal amortisseur thermique</h4>
-                            <p class="text-gray-700 text-lg leading-relaxed">
-                                <strong class="text-blue-700">≈ 93 %</strong> de l’excès d’énergie est stocké dans l’océan grâce à sa très grande capacité thermique.
+                    <div class="space-y-6 sm:space-y-8">
+                        <div class="bg-white dark:bg-gray-800 p-6 sm:p-7 rounded-xl shadow-sm border-l-4 border-blue-600">
+                            <h4 class="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-3">L’amortisseur thermique</h4>
+                            <p class="text-gray-700 dark:text-gray-300 text-md sm:text-lg leading-relaxed">
+                                <strong class="text-blue-700 dark:text-blue-400">≈ 93 %</strong> de l’excès d’énergie est stocké dans l’océan grâce à sa très grande capacité thermique.
                             </p>
                         </div>
 
-                        <div class="bg-white p-7 rounded-xl shadow-sm border-l-4 border-red-500">
-                            <h4 class="text-2xl font-bold text-gray-800 mb-3">Conséquences sur le niveau de la mer</h4>
-                            <ul class="space-y-4 text-gray-700">
+                        <div class="bg-white dark:bg-gray-800 p-6 sm:p-7 rounded-xl shadow-sm border-l-4 border-red-500">
+                            <h4 class="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-3">Conséquences</h4>
+                            <ul class="space-y-4 text-gray-700 dark:text-gray-300">
                                 <li class="flex items-start">
-                                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 text-red-600 font-bold flex items-center justify-center mr-4 text-lg">1</span>
+                                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-200 font-bold flex items-center justify-center mr-4">1</span>
                                     <span><strong>Dilatation thermique</strong> : l’eau se dilate quand elle se réchauffe</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 text-red-600 font-bold flex items-center justify-center mr-4 text-lg">2</span>
-                                    <span><strong>Fonte des glaces continentales</strong> (Groenland, Antarctique, glaciers)</span>
+                                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-200 font-bold flex items-center justify-center mr-4">2</span>
+                                    <span><strong>Fonte des glaces continentales</strong> (Groenland, glaciers)</span>
                                 </li>
                             </ul>
                         </div>
@@ -242,73 +245,69 @@
             </div>
         </section>
 
-        <!-- 4. Rétroactions -->
-        <section id="retroactions" class="py-20 bg-white">
+        <section id="retroactions" class="py-12 sm:py-20 bg-white dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-5">
-                <h3 class="text-4xl font-bold text-gray-900 text-center mb-6">4. Les rétroactions climatiques</h3>
-                <p class="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-                    Certains processus amplifient le réchauffement (rétroactions positives), d’autres le ralentissent (négatives).
+                <h3 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white text-center mb-6">4. Les rétroactions climatiques</h3>
+                <p class="text-center text-md sm:text-lg text-gray-600 dark:text-gray-400 mb-10 sm:mb-12 max-w-3xl mx-auto">
+                    Processus qui amplifient (positives) ou ralentissent (négatives) le réchauffement.
                 </p>
 
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Albedo -->
-                    <div class="bg-gray-50 rounded-2xl p-6 shadow-md hover:shadow-lg transition">
+                <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition border dark:border-gray-700">
                         <div class="flex justify-between items-center mb-5">
-                            <h4 class="text-xl font-bold text-gray-800">Effet albédo</h4>
-                            <span class="px-3 py-1 bg-red-100 text-red-700 text-sm font-semibold rounded-full">Positive</span>
+                            <h4 class="text-lg sm:text-xl font-bold text-gray-800 dark:text-white">Albédo</h4>
+                            <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-200 text-xs font-semibold rounded-full">Positive</span>
                         </div>
                         <div id="albedo-flow" class="space-y-4 text-center">
-                            <div class="feedback-step bg-white p-4 rounded-lg border border-red-200 shadow-sm">Température ↑</div>
+                            <div class="feedback-step bg-white dark:bg-gray-700 p-4 rounded-lg border border-red-200 dark:border-red-900 shadow-sm text-sm">Température ↑</div>
                             <div class="feedback-arrow hidden" data-step="1">↓</div>
-                            <div class="feedback-step hidden bg-white p-4 rounded-lg border" data-step="1">Fonte glaces / neige 🧊</div>
+                            <div class="feedback-step hidden bg-white dark:bg-gray-700 p-4 rounded-lg border dark:border-gray-600 text-sm" data-step="1">Fonte glaces / neige 🧊</div>
                             <div class="feedback-arrow hidden" data-step="2">↓</div>
-                            <div class="feedback-step hidden bg-white p-4 rounded-lg border" data-step="2">Surface plus sombre → albédo ↓</div>
+                            <div class="feedback-step hidden bg-white dark:bg-gray-700 p-4 rounded-lg border dark:border-gray-600 text-sm" data-step="2">Surface sombre → albédo ↓</div>
                             <div class="feedback-arrow hidden" data-step="3">↓</div>
-                            <div class="feedback-step hidden bg-white p-4 rounded-lg border border-red-300 shadow-md" data-step="3">Plus d’énergie absorbée → réchauffement ↑</div>
+                            <div class="feedback-step hidden bg-white dark:bg-gray-700 p-4 rounded-lg border border-red-300 dark:border-red-800 shadow-md text-sm font-bold" data-step="3">Réchauffement amplifié ↑</div>
                         </div>
-                        <div class="mt-6 flex gap-3 justify-center">
-                            <button onclick="nextFeedback('albedo')" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Suivant</button>
-                            <button onclick="resetFeedback('albedo')" class="px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">Reset</button>
+                        <div class="mt-6 flex gap-2 justify-center">
+                            <button onclick="nextFeedback('albedo')" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">Suivant</button>
+                            <button onclick="resetFeedback('albedo')" class="px-4 py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm">Reset</button>
                         </div>
                     </div>
 
-                    <!-- Pergélisol -->
-                    <div class="bg-gray-50 rounded-2xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition border dark:border-gray-700">
                         <div class="flex justify-between items-center mb-5">
-                            <h4 class="text-xl font-bold text-gray-800">Dégel du pergélisol</h4>
-                            <span class="px-3 py-1 bg-red-100 text-red-700 text-sm font-semibold rounded-full">Positive</span>
+                            <h4 class="text-lg sm:text-xl font-bold text-gray-800 dark:text-white">Pergélisol</h4>
+                            <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-200 text-xs font-semibold rounded-full">Positive</span>
                         </div>
                         <div id="permafrost-flow" class="space-y-4 text-center">
-                            <div class="feedback-step bg-white p-4 rounded-lg border border-red-200 shadow-sm">Température ↑</div>
+                            <div class="feedback-step bg-white dark:bg-gray-700 p-4 rounded-lg border border-red-200 dark:border-red-900 shadow-sm text-sm">Température ↑</div>
                             <div class="feedback-arrow hidden" data-step="1">↓</div>
-                            <div class="feedback-step hidden bg-white p-4 rounded-lg border" data-step="1">Dégel du pergélisol 🌡️</div>
+                            <div class="feedback-step hidden bg-white dark:bg-gray-700 p-4 rounded-lg border dark:border-gray-600 text-sm" data-step="1">Dégel du pergélisol 🌡️</div>
                             <div class="feedback-arrow hidden" data-step="2">↓</div>
-                            <div class="feedback-step hidden bg-white p-4 rounded-lg border" data-step="2">Libération CO₂ + CH₄</div>
+                            <div class="feedback-step hidden bg-white dark:bg-gray-700 p-4 rounded-lg border dark:border-gray-600 text-sm" data-step="2">Libération CO₂ + CH₄</div>
                             <div class="feedback-arrow hidden" data-step="3">↓</div>
-                            <div class="feedback-step hidden bg-white p-4 rounded-lg border border-red-300 shadow-md" data-step="3">Effet de serre renforcé → température ↑</div>
+                            <div class="feedback-step hidden bg-white dark:bg-gray-700 p-4 rounded-lg border border-red-300 dark:border-red-800 shadow-md text-sm font-bold" data-step="3">Effet de serre renforcé</div>
                         </div>
-                        <div class="mt-6 flex gap-3 justify-center">
-                            <button onclick="nextFeedback('permafrost')" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Suivant</button>
-                            <button onclick="resetFeedback('permafrost')" class="px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">Reset</button>
+                        <div class="mt-6 flex gap-2 justify-center">
+                            <button onclick="nextFeedback('permafrost')" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">Suivant</button>
+                            <button onclick="resetFeedback('permafrost')" class="px-4 py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm">Reset</button>
                         </div>
                     </div>
 
-                    <!-- Végétation -->
-                    <div class="bg-gray-50 rounded-2xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition border dark:border-gray-700">
                         <div class="flex justify-between items-center mb-5">
-                            <h4 class="text-xl font-bold text-gray-800">Végétation & puits de carbone</h4>
-                            <span class="px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full">Négative</span>
+                            <h4 class="text-lg sm:text-xl font-bold text-gray-800 dark:text-white">Végétation</h4>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-200 text-xs font-semibold rounded-full">Négative</span>
                         </div>
                         <div id="vegetation-flow" class="space-y-4 text-center">
-                            <div class="feedback-step bg-white p-4 rounded-lg border border-green-200 shadow-sm">CO₂ atmosphérique ↑</div>
+                            <div class="feedback-step bg-white dark:bg-gray-700 p-4 rounded-lg border border-green-200 dark:border-green-900 shadow-sm text-sm">CO₂ atmosphérique ↑</div>
                             <div class="feedback-arrow hidden" data-step="1">↓</div>
-                            <div class="feedback-step hidden bg-white p-4 rounded-lg border" data-step="1">Croissance végétale accélérée 🌱</div>
+                            <div class="feedback-step hidden bg-white dark:bg-gray-700 p-4 rounded-lg border dark:border-gray-600 text-sm" data-step="1">Croissance accélérée 🌱</div>
                             <div class="feedback-arrow hidden" data-step="2">↓</div>
-                            <div class="feedback-step hidden bg-white p-4 rounded-lg border border-green-300 shadow-md" data-step="2">Plus de carbone stocké → réchauffement atténué</div>
+                            <div class="feedback-step hidden bg-white dark:bg-gray-700 p-4 rounded-lg border border-green-300 dark:border-green-800 shadow-md text-sm font-bold" data-step="2">Réchauffement atténué</div>
                         </div>
-                        <div class="mt-6 flex gap-3 justify-center">
-                            <button onclick="nextFeedback('vegetation')" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Suivant</button>
-                            <button onclick="resetFeedback('vegetation')" class="px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">Reset</button>
+                        <div class="mt-6 flex gap-2 justify-center">
+                            <button onclick="nextFeedback('vegetation')" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">Suivant</button>
+                            <button onclick="resetFeedback('vegetation')" class="px-4 py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm">Reset</button>
                         </div>
                     </div>
                 </div>
@@ -317,7 +316,7 @@
 
     </main>
 
-    <footer class="bg-gray-800 text-gray-300 py-10 mt-auto">
+    <footer class="bg-gray-800 dark:bg-black text-gray-300 py-10 mt-auto">
         <div class="max-w-5xl mx-auto px-5 text-center text-sm">
             <p>Révisions ENS Luca</p>
             <p class="mt-3 text-gray-500">2025 - Réalisé pour un usage éducatif – non commercial</p>
@@ -330,6 +329,13 @@
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
+        // Fermer le menu mobile lors d'un clic sur un lien
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
         // Toggle cartes
         function toggleCard(id, button) {
             const el = document.getElementById(id);
@@ -339,13 +345,15 @@
 
         // Graphique répartition chaleur
         document.addEventListener('DOMContentLoaded', () => {
-            new Chart(document.getElementById('energyChart'), {
+            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            const chart = new Chart(document.getElementById('energyChart'), {
                 type: 'doughnut',
                 data: {
-                    labels: ['Océans', 'Glaces & neige', 'Continents', 'Atmosphère'],
+                    labels: ['Océans', 'Glaces', 'Continents', 'Atmosphère'],
                     datasets: [{
                         data: [93, 3, 3, 1],
-                        backgroundColor: ['#3b82f6', '#93c5fd', '#d97706', '#e5e7eb'],
+                        backgroundColor: ['#3b82f6', '#93c5fd', '#d97706', '#9ca3af'],
                         borderWidth: 0,
                         hoverOffset: 8
                     }]
@@ -354,7 +362,13 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { position: 'bottom', labels: { font: { size: 14 } } },
+                        legend: { 
+                            position: 'bottom', 
+                            labels: { 
+                                color: isDark ? '#e5e7eb' : '#374151',
+                                font: { size: 12 } 
+                            } 
+                        },
                         tooltip: { callbacks: { label: ctx => `${ctx.label} : ${ctx.raw}%` } }
                     },
                     cutout: '62%'
@@ -370,13 +384,13 @@
 
             const forcingLevels = [0, 0.6, 1.1, 1.8, 2.5, 3.2, 4.0];
             const statusTexts = [
-                ["Équilibre ≈ stable", "text-green-600"],
-                ["Forçage faible (+)", "text-emerald-600"],
-                ["Forçage modéré (+)", "text-amber-600"],
-                ["Forçage significatif (+)", "text-orange-600"],
-                ["Forçage fort (+)", "text-red-600"],
-                ["Forçage très fort (+)", "text-red-700 font-bold"],
-                ["Scénario extrême", "text-red-800 font-bold"]
+                ["Équilibre ≈ stable", "text-green-600 dark:text-green-400"],
+                ["Forçage faible (+)", "text-emerald-600 dark:text-emerald-400"],
+                ["Forçage modéré (+)", "text-amber-600 dark:text-amber-400"],
+                ["Forçage significatif (+)", "text-orange-600 dark:text-orange-400"],
+                ["Forçage fort (+)", "text-red-600 dark:text-red-400"],
+                ["Forçage très fort (+)", "text-red-700 dark:text-red-500 font-bold"],
+                ["Scénario extrême", "text-red-800 dark:text-red-600 font-bold"]
             ];
 
             slider.addEventListener('input', () => {
@@ -411,7 +425,7 @@
             steps[current].classList.remove('hidden');
             if (current > 0) {
                 arrows[current-1].classList.remove('hidden');
-                steps[current].classList.add('bg-blue-50', 'border-blue-300', 'font-semibold');
+                steps[current].classList.add('bg-blue-50', 'dark:bg-blue-900/30', 'border-blue-300', 'dark:border-blue-700');
             }
         }
 
@@ -422,7 +436,7 @@
 
             feedbackStates[type] = 0;
             steps.forEach((s, i) => {
-                s.classList.remove('bg-blue-50', 'border-blue-300', 'font-semibold');
+                s.classList.remove('bg-blue-50', 'dark:bg-blue-900/30', 'border-blue-300', 'dark:border-blue-700');
                 if (i > 0) s.classList.add('hidden');
             });
             arrows.forEach(a => a.classList.add('hidden'));
