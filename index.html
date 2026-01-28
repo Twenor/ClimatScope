@@ -150,7 +150,7 @@
             </div>
         </section>
 
-        <section id="forcage" class="py-12 sm:py-20 bg-white dark:bg-gray-900">
+        <!-- <section id="forcage" class="py-12 sm:py-20 bg-white dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-5">
                 <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
                     <div>
@@ -199,6 +199,36 @@
                                 <div id="output-value" class="text-3xl sm:text-4xl font-black">≈ 342 W/m²</div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <section id="forcage" class="py-12 bg-white dark:bg-gray-900 px-5">
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
+                <div>
+                    <h3 class="text-3xl font-bold mb-6">2. Forçage radiatif</h3>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border dark:border-gray-700">
+                        <label class="block text-sm font-medium mb-3">Augmentation des GES</label>
+                        <input type="range" id="ghg-slider" min="0" max="100" value="15" class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer accent-red-500">
+                        <div class="mt-6 text-center">
+                            <p id="forcing-value" class="text-2xl font-bold">≈ +0.6 W/m²</p>
+                            <p id="forcing-status" class="text-green-600 dark:text-green-400">Équilibre stable</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-black rounded-2xl py-10 px-6 shadow-2xl flex flex-col items-center gap-8 w-full">
+                    <div class="text-center">
+                        <div class="text-yellow-300 text-sm font-bold uppercase tracking-wider mb-1">Solaire reçu</div>
+                        <div class="text-4xl font-black text-yellow-400">342 W/m²</div>
+                    </div>
+                    <div class="w-20 h-48 bg-gray-800 rounded-t-2xl relative overflow-hidden">
+                        <div id="trapped-heat" class="absolute bottom-0 w-full bg-gradient-to-t from-red-900 to-red-500 transition-all duration-500" style="height: 8%"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-gray-400 text-sm font-bold uppercase tracking-wider mb-1">Infrarouge émis</div>
+                        <div id="output-value" class="text-3xl font-black text-white">≈ 342 W/m²</div>
                     </div>
                 </div>
             </div>
